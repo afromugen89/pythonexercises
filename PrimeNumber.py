@@ -1,6 +1,8 @@
 import sys
 import math
 
+print("Determine number is a prime number or not" + "\n")
+
 while True:
     
     userInputNumber = input("Enter your number:")
@@ -35,9 +37,20 @@ while True:
                 print("-----------")
                 break
 
+            #quick win if potential prime is either 2,3,5 or 7
+            if isPotentialPrime == 2:
+                mod = 1
+            elif isPotentialPrime == 3:
+                mod = 1
+            elif isPotentialPrime == 5:
+                mod = 1
+            elif isPotentialPrime == 7:
+                mod = 1
+
             #2,3,5,7,11,13,17,19
-            #beyond that, it is repetition of above prime numbers 
-            if squareRoot > 2:
+            #beyond that, it is repetition of above prime numbers
+            #need >= 2 condition to catch 4 is not prime 
+            if squareRoot >= 2:
                 try:
                     assert isPotentialPrime%2 != 0
                     mod = isPotentialPrime%2
@@ -62,6 +75,17 @@ while True:
                     assert isPotentialPrime%5 != 0
                     if mod == 0:
                         mod = isPotentialPrime%5
+                except:
+                    mod = 0
+                    print(userInputNumber + "\tis not a prime number")
+                    print("-----------")
+                    break
+
+            if squareRoot > 7:
+                try:
+                    assert isPotentialPrime%7 !=0
+                    if mod == 0:
+                        mod = isPotentialPrime%7
                 except:
                     mod = 0
                     print(userInputNumber + "\tis not a prime number")
@@ -136,6 +160,3 @@ while True:
     else:
         print(userInputNumber + "\tis not a prime number")
         print("-----------")
-
-    
-
